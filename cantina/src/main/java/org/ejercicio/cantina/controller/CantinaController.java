@@ -9,6 +9,8 @@ public class CantinaController {
     // Página principal
     @GetMapping({"/", "/alumnos"})
     public String index() {
+
+        
         return "alumnos";
     }
 
