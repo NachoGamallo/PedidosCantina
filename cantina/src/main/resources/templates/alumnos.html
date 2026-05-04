@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alumnos | Cantina IES Mutxamel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-100 via-sky-50 to-slate-200 text-slate-800">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 border-b border-white/40 bg-white/80 backdrop-blur-xl shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
+
+            <div class="flex items-center gap-5">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 px-4 py-3">
+                    <img src="img/mutxa.jpg" alt="Logo IES Mutxamel" class="h-16 w-auto object-contain">
+                </div>
+
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
+                        Cantina IES Mutxamel
+                    </h1>
+                    <p class="text-slate-500 text-sm md:text-base mt-1">
+                        Sistema de gestión escolar
+                    </p>
+                </div>
+            </div>
+
+            <nav class="flex flex-wrap gap-3">
+                <a href="alumnos"
+                   class="px-5 py-3 rounded-2xl bg-slate-900 text-white font-semibold shadow hover:bg-slate-800 transition">
+                    Alumnos
+                </a>
+                <a href="productos"
+                   class="px-5 py-3 rounded-2xl bg-white text-slate-700 font-semibold border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition">
+                    Productos
+                </a>
+                <a href="nuevo_pedido"
+                   class="px-5 py-3 rounded-2xl bg-white text-slate-700 font-semibold border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition">
+                    Nuevo pedido
+                </a>
+                <a href="pedidos_pendientes"
+                   class="px-5 py-3 rounded-2xl bg-white text-slate-700 font-semibold border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition">
+                    Pedidos pendientes
+                </a>
+            </nav>
+
+        </div>
+    </div>
+</header>
+
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+    <section class="mb-8">
+        <div class="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg p-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div>
+            <span class="inline-flex items-center rounded-full bg-sky-100 text-sky-700 px-4 py-1 text-sm font-semibold mb-4">
+              Gestión académica · Cantina
+            </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                        Listado de alumnos
+                    </h2>
+                    <p class="mt-3 text-lg text-slate-600 max-w-2xl">
+                        Consulta rápida de los alumnos registrados en la cantina del centro y accede a sus pedidos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 min-w-[260px]">
+                    <div class="rounded-2xl bg-slate-900 text-white p-5 shadow">
+                        <p class="text-sm text-slate-300">Total alumnos</p>
+                        <p class="text-3xl font-extrabold mt-1">38</p>
+                    </div>
+                    <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+                        <p class="text-sm text-slate-500">Pedidos hoy</p>
+                        <p class="text-3xl font-extrabold text-slate-900 mt-1">14</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rounded-3xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-xl p-6 md:p-8">
+
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+            <div class="relative w-full lg:max-w-md">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6 16.65a7.5 7.5 0 0 0 10.65 0Z" />
+            </svg>
+          </span>
+                <input
+                        type="text"
+                        placeholder="Buscar alumno por nombre..."
+                        class="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 bg-slate-50/80 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-sky-100 focus:border-sky-300 transition"
+                />
+            </div>
+
+            <div class="flex gap-3">
+                <button class="px-5 py-4 rounded-2xl border border-slate-200 bg-white text-slate-700 font-semibold hover:bg-slate-50 transition">
+                    Exportar
+                </button>
+                <button class="px-6 py-4 rounded-2xl bg-slate-900 text-white font-semibold shadow hover:bg-slate-800 transition">
+                    + Añadir alumno
+                </button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-[780px] border-separate border-spacing-y-3">
+                <thead>
+                <tr>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">ID</th>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">Alumno</th>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">Curso</th>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">Teléfono</th>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">Estado</th>
+                    <th class="text-left text-sm font-bold text-slate-500 px-4 py-3">Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr class="bg-white shadow-sm rounded-2xl">
+                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">1</td>
+                    <td class="px-4 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="h-11 w-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
+                                LP
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Danielle Bemfica</p>
+                                <p class="text-sm text-slate-500">danielle@iesmutxamel.es</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-5 font-medium">2º DAM</td>
+                    <td class="px-4 py-5">600123456</td>
+                    <td class="px-4 py-5">
+                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
+                  Activo
+                </span>
+                    </td>
+                    <td class="px-4 py-5 rounded-r-2xl">
+                        <a href="pedidos_alumno"
+                           class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
+                            Ver pedidos
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="bg-white shadow-sm rounded-2xl">
+                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">2</td>
+                    <td class="px-4 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="h-11 w-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                                CM
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Adrián Boix</p>
+                                <p class="text-sm text-slate-500">adrian@iesmutxamel.es</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-5 font-medium">2º DAM</td>
+                    <td class="px-4 py-5">611234567</td>
+                    <td class="px-4 py-5">
+                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
+                  Activo
+                </span>
+                    </td>
+                    <td class="px-4 py-5 rounded-r-2xl">
+                        <a href="pedidos_alumno"
+                           class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
+                            Ver pedidos
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="bg-white shadow-sm rounded-2xl">
+                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">3</td>
+                    <td class="px-4 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="h-11 w-11 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
+                                ML
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Andrew Bowen</p>
+                                <p class="text-sm text-slate-500">andrew@iesmutxamel.es</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-5 font-medium">2º DAM</td>
+                    <td class="px-4 py-5">622345678</td>
+                    <td class="px-4 py-5">
+                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
+                  Activo
+                </span>
+                    </td>
+                    <td class="px-4 py-5 rounded-r-2xl">
+                        <a href="pedidos_alumno"
+                           class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
+                            Ver pedidos
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
