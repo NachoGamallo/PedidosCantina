@@ -52,13 +52,13 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 min-w-[260px]">
-                    <div class="rounded-2xl bg-slate-900 text-white p-5 shadow">
-                        <p class="text-sm text-slate-300">Productos activos</p>
-                        <p class="text-3xl font-extrabold mt-1">24</p>
+                    <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+                        <p class="text-sm text-slate-500">Productos activos</p>
+                        <p class="text-3xl font-extrabold text-slate-900" th:text="${activos}">0</p>
                     </div>
                     <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
                         <p class="text-sm text-slate-500">Sin stock</p>
-                        <p class="text-3xl font-extrabold text-slate-900 mt-1">3</p>
+                        <p class="text-3xl font-extrabold text-slate-900" th:text="${sinStock}">0</p>
                     </div>
                 </div>
             </div>

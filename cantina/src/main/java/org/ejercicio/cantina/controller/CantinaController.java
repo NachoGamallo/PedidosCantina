@@ -24,6 +24,8 @@ public class CantinaController {
     public String index(Model model) {
 
         model.addAttribute("alumnos",cantinaService.getAllAlums());
+        model.addAttribute("totalAlumnos", cantinaService.getAllAlumns());
+        model.addAttribute("pedidosHoy", cantinaService.getTodayOrders());
         return "alumnos";
 
     }
@@ -33,6 +35,8 @@ public class CantinaController {
     public String products(Model model) {
 
         model.addAttribute("productos",cantinaService.getAllProducts());
+        model.addAttribute("activos", cantinaService.getActiveProducts());
+        model.addAttribute("sinStock", cantinaService.getProductsWithOutStock());
         return "productos";
 
     }

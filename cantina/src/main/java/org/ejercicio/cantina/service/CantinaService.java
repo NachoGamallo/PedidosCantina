@@ -10,6 +10,7 @@ import org.ejercicio.cantina.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -77,5 +78,30 @@ public class CantinaService {
 
         }
 
+    }
+
+    //Total alumnos.
+    public long getAllAlumns(){ return alumnRepo.count(); }
+
+    //Pedidos de hoy
+    public long getTodayOrders(){
+        return orderRepo.findAll().stream()
+                .filter(o -> o.getCreated_at() != null &&
+                        o.getCreated_at().toLocalDate().equals(LocalDate.now()))
+                .count();
+    }
+
+    //Productos activos (con stock).
+    public long getActiveProducts() {
+        return productRepo.findAll().stream()
+                .filter(p -> p.getStock() > 0)
+                .count();
+    }
+
+    //Productos con stock 0
+    public long getProductsWithOutStock() {
+        return productRepo.findAll().stream()
+                .filter(p -> p.getStock() == 0)
+                .count();
     }
 }

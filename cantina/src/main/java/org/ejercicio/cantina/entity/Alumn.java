@@ -17,7 +17,7 @@ public class Alumn {
     private String name;
 
     @Column(name = "curso" , nullable = false)
-    private int curs;
+    private String curs;
 
     @Column(name = "telefono", nullable = false, unique = true)
     private int phone_number;
