@@ -97,72 +97,30 @@
                 </thead>
 
                 <tbody>
-                <tr class="bg-white shadow-sm">
-                    <td class="px-4 py-5 rounded-l-2xl font-semibold text-slate-700">#101</td>
+                <tr th:each="ped : ${pedidos}" class="bg-white shadow-sm">
+                    <td class="px-4 py-5 rounded-l-2xl font-semibold text-slate-700" th:text="'#' + ${ped.id}">#101</td>
                     <td class="px-4 py-5">
                         <div>
-                            <p class="font-bold text-slate-900">Danielle</p>
-                            <p class="text-sm text-slate-500">2º DAM</p>
+                            <p class="font-bold text-slate-900" th:text="${ped.alumn.name}">Alumno</p>
                         </div>
                     </td>
-                    <td class="px-4 py-5 font-bold text-slate-900">Bocadillo de jamón</td>
-                    <td class="px-4 py-5">1</td>
-                    <td class="px-4 py-5">3,50 €</td>
-                    <td class="px-4 py-5">10:45</td>
+                    <td class="px-4 py-5 font-bold text-slate-900" th:text="${ped.product.name}">Producto</td>
+                    <td class="px-4 py-5" th:text="${ped.quantity}">1</td>
+                    <td class="px-4 py-5" th:text="${ped.product.price * ped.quantity} + ' €'">Total</td>
                     <td class="px-4 py-5">
                         <span class="inline-flex rounded-full bg-amber-100 text-amber-700 px-3 py-1 text-sm font-semibold">Pendiente</span>
                     </td>
                     <td class="px-4 py-5 rounded-r-2xl">
-                        <button class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition">
-                            Entregar
-                        </button>
-                    </td>
-                </tr>
-
-                <tr class="bg-white shadow-sm">
-                    <td class="px-4 py-5 rounded-l-2xl font-semibold text-slate-700">#102</td>
-                    <td class="px-4 py-5">
-                        <div>
-                            <p class="font-bold text-slate-900">Arián</p>
-                            <p class="text-sm text-slate-500">2º DAM</p>
-                        </div>
-                    </td>
-                    <td class="px-4 py-5 font-bold text-slate-900">Agua mineral</td>
-                    <td class="px-4 py-5">2</td>
-                    <td class="px-4 py-5">2,00 €</td>
-                    <td class="px-4 py-5">10:47</td>
-                    <td class="px-4 py-5">
-                        <span class="inline-flex rounded-full bg-amber-100 text-amber-700 px-3 py-1 text-sm font-semibold">Pendiente</span>
-                    </td>
-                    <td class="px-4 py-5 rounded-r-2xl">
-                        <button class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition">
-                            Entregar
-                        </button>
-                    </td>
-                </tr>
-
-                <tr class="bg-white shadow-sm">
-                    <td class="px-4 py-5 rounded-l-2xl font-semibold text-slate-700">#103</td>
-                    <td class="px-4 py-5">
-                        <div>
-                            <p class="font-bold text-slate-900">Andrew</p>
-                            <p class="text-sm text-slate-500">2º DAM</p>
-                        </div>
-                    </td>
-                    <td class="px-4 py-5 font-bold text-slate-900">Zumo de naranja</td>
-                    <td class="px-4 py-5">1</td>
-                    <td class="px-4 py-5">1,50 €</td>
-                    <td class="px-4 py-5">10:50</td>
-                    <td class="px-4 py-5">
-                        <span class="inline-flex rounded-full bg-amber-100 text-amber-700 px-3 py-1 text-sm font-semibold">Pendiente</span>
-                    </td>
-                    <td class="px-4 py-5 rounded-r-2xl">
-                        <button class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition">
-                            Entregar
-                        </button>
+                        <!-- Formulario POST para entregar el pedido -->
+                        <form th:action="@{/pedidos/entregar/{id}(id=${ped.id})}" method="post">
+                            <button type="submit" class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition">
+                                Entregar
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
+
             </table>
         </div>
     </section>

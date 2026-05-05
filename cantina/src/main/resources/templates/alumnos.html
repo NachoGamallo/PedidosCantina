@@ -133,90 +133,28 @@
                 </thead>
 
                 <tbody>
-                <tr class="bg-white shadow-sm rounded-2xl">
-                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">1</td>
+                <tr th:each="alumn : ${alumnos}" class="bg-white shadow-sm rounded-2xl">
+                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600" th:text="${alumn.id}">1</td>
                     <td class="px-4 py-5">
-                        <div class="flex items-center gap-3">
-                            <div class="h-11 w-11 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
-                                LP
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-900">Danielle Bemfica</p>
-                                <p class="text-sm text-slate-500">danielle@iesmutxamel.es</p>
-                            </div>
+                        <div>
+                            <p class="font-bold text-slate-900" th:text="${alumn.name}">Nombre Alumno</p>
                         </div>
                     </td>
-                    <td class="px-4 py-5 font-medium">2º DAM</td>
-                    <td class="px-4 py-5">600123456</td>
+                    <td class="px-4 py-5 font-medium" th:text="${alumn.curs}">Curso</td>
+                    <td class="px-4 py-5" th:text="${alumn.phone_number}">Teléfono</td>
                     <td class="px-4 py-5">
-                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
-                  Activo
-                </span>
+                        <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">Activo</span>
                     </td>
                     <td class="px-4 py-5 rounded-r-2xl">
-                        <a href="pedidos_alumno"
-                           class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
-                            Ver pedidos
-                        </a>
-                    </td>
-                </tr>
-
-                <tr class="bg-white shadow-sm rounded-2xl">
-                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">2</td>
-                    <td class="px-4 py-5">
-                        <div class="flex items-center gap-3">
-                            <div class="h-11 w-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
-                                CM
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-900">Adrián Boix</p>
-                                <p class="text-sm text-slate-500">adrian@iesmutxamel.es</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-5 font-medium">2º DAM</td>
-                    <td class="px-4 py-5">611234567</td>
-                    <td class="px-4 py-5">
-                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
-                  Activo
-                </span>
-                    </td>
-                    <td class="px-4 py-5 rounded-r-2xl">
-                        <a href="pedidos_alumno"
-                           class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
-                            Ver pedidos
-                        </a>
-                    </td>
-                </tr>
-
-                <tr class="bg-white shadow-sm rounded-2xl">
-                    <td class="px-4 py-5 rounded-l-2xl font-medium text-slate-600">3</td>
-                    <td class="px-4 py-5">
-                        <div class="flex items-center gap-3">
-                            <div class="h-11 w-11 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
-                                ML
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-900">Andrew Bowen</p>
-                                <p class="text-sm text-slate-500">andrew@iesmutxamel.es</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4 py-5 font-medium">2º DAM</td>
-                    <td class="px-4 py-5">622345678</td>
-                    <td class="px-4 py-5">
-                <span class="inline-flex rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
-                  Activo
-                </span>
-                    </td>
-                    <td class="px-4 py-5 rounded-r-2xl">
-                        <a href="pedidos_alumno"
+                        <!-- Enlace dinámico al historial del alumno -->
+                        <a th:href="@{/pedidos/alumno/{id}(id=${alumn.id})}"
                            class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition">
                             Ver pedidos
                         </a>
                     </td>
                 </tr>
                 </tbody>
+
             </table>
         </div>
     </section>
