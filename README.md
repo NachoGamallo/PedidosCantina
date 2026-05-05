@@ -1,4 +1,4 @@
-# 🍱 PedidosCantina - IES Mutxamel Management System
+# PedidosCantina - IES Mutxamel Management System
 
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.3-6DB33F?style=flat&logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-17%2B-ED8B00?style=flat&logo=openjdk&logoColor=white)
@@ -9,7 +9,7 @@
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 *   **Student Directory Management**: Access a comprehensive list of students including their names, courses, and unique contact numbers.
 *   **Dynamic Inventory Control**: View real-time product status, including pricing and stock levels (Active vs. Out of Stock).
@@ -22,7 +22,7 @@
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### **Backend**
 *   **Framework**: Spring Boot 4.0.3.
@@ -37,7 +37,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 The project follows a standard Maven architecture and Spring MVC design pattern:
 
@@ -78,7 +78,7 @@ Bash
 ./mvnw spring-boot:run
 The application will be available at http://localhost:8080.
 
-## 📊 Initial Data Seeding
+## Initial Data Seeding
 Upon the first run, the system automatically executes import.sql to populate your environment with:
 
 Initial Students: Profiles for Juan Pérez, María López, and Carlos Ruiz.
