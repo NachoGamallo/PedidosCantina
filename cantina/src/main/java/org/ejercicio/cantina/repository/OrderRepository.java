@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     
-    List<Order> getOrderByStatusIsFalse(boolean status);
+    List<Order> getOrderByStatus(boolean status);
 
     List<Order> getOrderByAlumn_Id(int alumnId);
     

@@ -35,7 +35,11 @@ public class CantinaService {
     }
 
     public List<Order> getPendingOrder(){
-        return orderRepo.getOrderByStatusIsFalse(false);
+        return orderRepo.getOrderByStatus(false);
+    }
+
+    public long getNumPendingOrder(){
+        return orderRepo.getOrderByStatus(false).size();
     }
 
     public List<Order> getOrderByAlumnId(int idAlumn){
@@ -104,4 +108,8 @@ public class CantinaService {
                 .filter(p -> p.getStock() == 0)
                 .count();
     }
+
+    public long getNumberOrdersByAlumn(int idAlumn){ return orderRepo.getOrderByAlumn_Id(idAlumn).size(); }
+
+    public Product getProductById(int idProduct){ return productRepo.getProductById(idProduct);}
 }

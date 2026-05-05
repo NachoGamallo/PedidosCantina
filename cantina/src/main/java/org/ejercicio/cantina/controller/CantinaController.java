@@ -1,16 +1,14 @@
 package org.ejercicio.cantina.controller;
 
 
-import jakarta.transaction.Transactional;
+import org.ejercicio.cantina.entity.Alumn;
 import org.ejercicio.cantina.entity.Order;
+import org.ejercicio.cantina.entity.Product;
 import org.ejercicio.cantina.service.CantinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -45,6 +43,12 @@ public class CantinaController {
     @GetMapping("/pedidos/nuevo")
     public String newOrder(Model model) {
 
+        Order order = new Order();
+
+        order.setQuantity(1);
+        order.setAlumn(new Alumn());
+        order.setProduct(new Product());
+
         model.addAttribute("pedido", new Order());
         model.addAttribute("alumnos", cantinaService.getAllAlums());
         model.addAttribute("productos", cantinaService.getAllProducts());
@@ -53,28 +57,76 @@ public class CantinaController {
     }
 
     //Regist an order.
+//    @PostMapping("/pedidos/nuevo")
+//    public String registerOrder(@ModelAttribute Order order , @RequestParam("accion") String action , RedirectAttributes redirectAttributes, Model model) {
+//
+//        if (order.getQuantity() <= 0){
+//
+//            model.addAttribute("error", "La cantidad debe ser mayor a 0");
+//            model.addAttribute("alumnos", cantinaService.getAllAlums());
+//            model.addAttribute("productos", cantinaService.getAllProducts());
+//            return "redirect:/pedidos/nuevo";
+//        }
+//
+//        boolean check = cantinaService.registerOrder(order);
+//        if (check){
+//            redirectAttributes.addFlashAttribute("mensaje", "Pedido registrado con exito");
+//            return "redirect:/pedidos/pendientes";
+//        }else {
+//
+//            model.addAttribute("error", "Error: Stock insuficiente o producto no valido");
+//            model.addAttribute("alumnos", cantinaService.getAllAlums());
+//            model.addAttribute("products", cantinaService.getAllProducts());
+//            return "redirect:/pedidos/nuevo";
+//
+//        }
+//    }
+
     @PostMapping("/pedidos/nuevo")
-    public String registerOrder(@ModelAttribute Order order, RedirectAttributes redirectAttributes, Model model) {
+    public String registerOrder(@ModelAttribute Order order,
+                                @RequestParam("accion") String action,
+                                RedirectAttributes redirectAttributes,
+                                Model model) {
+
+        model.addAttribute("alumnos", cantinaService.getAllAlums());
+        model.addAttribute("productos", cantinaService.getAllProducts());
+        model.addAttribute("pedido", order);
 
         if (order.getQuantity() <= 0){
-
             model.addAttribute("error", "La cantidad debe ser mayor a 0");
-            model.addAttribute("alumnos", cantinaService.getAllAlums());
-            model.addAttribute("productos", cantinaService.getAllProducts());
+            return "nuevo_pedido";
+        }
+
+        if ("calcular".equals(action)) {
+
+            Product product = cantinaService.getProductById(order.getProduct().getId());
+
+            if (product != null) {
+                double precio = product.getPrice();
+                int cantidad = order.getQuantity();
+                double total = precio * cantidad;
+
+                model.addAttribute("precio", precio);
+                model.addAttribute("total", total);
+                model.addAttribute("productoNombre", product.getName());
+            }
+
+            if (order.getAlumn() != null) {
+                Alumn alumn = cantinaService.getAlumnById(order.getAlumn().getId());
+                model.addAttribute("alumnoNombre", alumn.getName());
+            }
+
             return "nuevo_pedido";
         }
 
         boolean check = cantinaService.registerOrder(order);
+
         if (check){
             redirectAttributes.addFlashAttribute("mensaje", "Pedido registrado con exito");
             return "redirect:/pedidos/pendientes";
-        }else {
-
+        } else {
             model.addAttribute("error", "Error: Stock insuficiente o producto no valido");
-            model.addAttribute("alumnos", cantinaService.getAllAlums());
-            model.addAttribute("products", cantinaService.getAllProducts());
             return "nuevo_pedido";
-
         }
     }
 
@@ -84,6 +136,7 @@ public class CantinaController {
 
         model.addAttribute("alumno", cantinaService.getAlumnById(idAlumn));
         model.addAttribute("pedidos", cantinaService.getOrderByAlumnId(idAlumn));
+        model.addAttribute("numPedidos", cantinaService.getNumberOrdersByAlumn(idAlumn));
         return "pedidos_alumno";
 
     }
@@ -93,6 +146,7 @@ public class CantinaController {
     public String pendingOrder(Model model) {
 
         model.addAttribute("pedidos", cantinaService.getPendingOrder());
+        model.addAttribute("NumPedidos",cantinaService.getNumPendingOrder());
         return "pedidos_pendientes";
 
     }
