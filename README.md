@@ -55,7 +55,7 @@ nachogamallo-pedidoscantina/
 
 ```
 
-## ⚙️ Configuration & Installation
+## Configuration & Installation
 **1. Database Setup**
 Ensure you have a PostgreSQL instance running. By default, the application expects the following configuration in application.properties:
 
@@ -85,5 +85,5 @@ Initial Students: Profiles for Juan Pérez, María López, and Carlos Ruiz.
 
 Product Catalog: Includes items like "Bocadillo de Jamón", "Zumo de Naranja", and out-of-stock items for validation testing.
 
-## 📝 License
+## License
 This project was developed for academic purposes at IES Mutxamel.
